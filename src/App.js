@@ -2,8 +2,10 @@ import { useState } from "react";
 import Home from "./pages/Home";
 import Usuario from "./pages/Usuario";
 import Pacientes from "./pages/Pacientes";
+import Paciente2 from "./pages/Paciente2";
 import Paciente from "./pages/Paciente";
 import NuevoPaciente from "./pages/NuevoPaciente";
+import EditarPaciente from "./pages/EditarPaciente";
 import SignIn from "./pages/SignIn";
 import Nav from "./components/Nav";
 
@@ -59,6 +61,12 @@ function App() {
     setPacientes(pacientesList);
   };
 
+  const editarPaciente = (nuevo, indice) => {
+    const newPac = [...pacientes];
+    newPac[indice] = nuevo;
+    setPacientes(newPac);
+  };
+
   const changeToken = (nuevoToken) => {
     setToken(nuevoToken);
   };
@@ -74,12 +82,25 @@ function App() {
           element={<Pacientes mensaje={cadena} pacientes={pacientes} />}
         />
         <Route
-          path="/pacientes/:id"
+          path="/pacientes1/:id"
           element={<Paciente pacientes={pacientes} />}
+        />
+        <Route
+          path="/pacientes2/:id"
+          element={<Paciente2 pacientes={pacientes} />}
         />
         <Route
           path="/pacientes/nuevo"
           element={<NuevoPaciente addPacientes={addPacientes} />}
+        />
+        <Route
+          path="/pacientes/editar/:id"
+          element={
+            <EditarPaciente
+              pacientes={pacientes}
+              editarPaciente={editarPaciente}
+            />
+          }
         />
         {!token && (
           <Route

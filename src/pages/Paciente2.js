@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 
-const Paciente = ({ pacientes }) => {
+const Usuario = ({ pacientes }) => {
   let elementos;
   const { id = 0 } = useParams();
   const index = pacientes.findIndex((paciente) => paciente.id === Number(id));
@@ -19,8 +19,6 @@ const Paciente = ({ pacientes }) => {
           <li>{paciente.nombre}</li>
           <li>{paciente.edad}</li>
         </ul>
-        <Link to={`/pacientes/editar/${paciente.id}`}>Editar</Link>
-        <br />
         <Link to="/pacientes">Volver</Link>
       </>
     );
@@ -28,4 +26,4 @@ const Paciente = ({ pacientes }) => {
   return elementos;
 };
 
-export default Paciente;
+export default Usuario;

@@ -7,7 +7,8 @@ const Pacientes = ({ pacientes }) => {
       {pacientes.map((paciente) => {
         return (
           <li key={paciente.id}>
-            <Link to={`/pacientes/${paciente.id}`}>{paciente.nombre}</Link>
+            <Link to={`/pacientes1/${paciente.id}`}>{paciente.nombre}1</Link>
+            <Link to={`/pacientes2/${paciente.id}`}>{paciente.nombre}2</Link>
           </li>
         );
       })}
