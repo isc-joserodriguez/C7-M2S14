@@ -3,10 +3,13 @@ import Home from "./pages/Home";
 import Usuario from "./pages/Usuario";
 import Pacientes from "./pages/Pacientes";
 import Paciente from "./pages/Paciente";
+import NuevoPaciente from "./pages/NuevoPaciente";
+import Nav from "./components/Nav";
 
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
+  const cadena = "Hola";
   const [pacientes, setPacientes] = useState([
     {
       id: 0,
@@ -45,29 +48,32 @@ function App() {
     },
   ]);
 
+  const changePacientes = (nuevoPaciente) => {
+    const pacientesList = [...pacientes];
+    pacientesList.push({
+      ...nuevoPaciente,
+      id: Number((Math.random() * 500000).toFixed()),
+    });
+    setPacientes(pacientesList);
+  };
+
   return (
     <>
-      <ul>
-        <li>
-          <Link to="/home">Home</Link>
-        </li>
-        <li>
-          <Link to="/usuario">Usuario</Link>
-        </li>
-        <li>
-          <Link to="/pacientes">Pacientes</Link>
-        </li>
-      </ul>
+      <Nav />
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/usuario" element={<Usuario />} />
         <Route
           path="/pacientes"
-          element={<Pacientes pacientes={pacientes} />}
+          element={<Pacientes mensaje={cadena} pacientes={pacientes} />}
         />
         <Route
           path="/pacientes/:id"
           element={<Paciente pacientes={pacientes} />}
+        />
+        <Route
+          path="/pacientes/nuevo"
+          element={<NuevoPaciente changePacientes={changePacientes} />}
         />
         <Route path="/" element={<h1>Sin ruta</h1>} />
       </Routes>
