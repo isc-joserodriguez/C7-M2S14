@@ -15,6 +15,9 @@ const Nav = () => {
       <li>
         <Link to="/pacientes/nuevo">Nuevo Paciente</Link>
       </li>
+      <li>
+        <Link to="/signin">Iniciar Sesión</Link>
+      </li>
     </ul>
   );
 };

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const NuevoPaciente = ({ changePacientes }) => {
+const NuevoPaciente = ({ addPacientes }) => {
   const [formValido, setFormValido] = useState(false);
   const [pacienteNuevo, setPacienteNuevo] = useState({});
   const eventoChange = (e) => {
@@ -21,7 +21,7 @@ const NuevoPaciente = ({ changePacientes }) => {
   };
 
   const buttonClick = () => {
-    changePacientes(pacienteNuevo);
+    addPacientes(pacienteNuevo);
   };
   return (
     <>
