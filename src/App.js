@@ -9,7 +9,9 @@ import EditarPaciente from "./pages/EditarPaciente";
 import SignIn from "./pages/SignIn";
 import Nav from "./components/Nav";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
+
+import imagenPerro from './assets/img/perro.jpg'
 
 function App() {
   const cadena = "Hola";
@@ -73,10 +75,12 @@ function App() {
 
   return (
     <>
+      <img src= "/static/media/perro.c9d7309cfc0bf95d3e45.jpg" />
       <Nav />
       <Routes>
         <Route path="/home" element={<Home />} />
-        <Route path="/usuario" element={<Usuario />} />
+        {token && <Route path="/usuario" element={<Usuario />} />}
+
         <Route
           path="/pacientes"
           element={<Pacientes mensaje={cadena} pacientes={pacientes} />}
@@ -109,6 +113,15 @@ function App() {
           />
         )}
         <Route path="/" element={<h1>Sin ruta</h1>} />
+        <Route
+          path="*"
+          element={
+            <div>
+              <h1>Error, esta ruta no existe</h1>
+              <Link to="/">Volver</Link>
+            </div>
+          }
+        />
       </Routes>
       <h1>FOOTER</h1>
     </>
