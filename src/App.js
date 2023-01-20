@@ -11,7 +11,7 @@ import Nav from "./components/Nav";
 
 import { Routes, Route, Link } from "react-router-dom";
 
-import imagenPerro from './assets/img/perro.jpg'
+import imagenPerro from './assets/img/perro.jpg';
 
 function App() {
   const cadena = "Hola";
@@ -75,7 +75,7 @@ function App() {
 
   return (
     <>
-      <img src= "/static/media/perro.c9d7309cfc0bf95d3e45.jpg" />
+      <img src= {imagenPerro} />
       <Nav />
       <Routes>
         <Route path="/home" element={<Home />} />
